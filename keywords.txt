@@ -8,6 +8,9 @@ setLowPowerMode	KEYWORD2
 reset	KEYWORD2
 setMaxDuration	KEYWORD2
 calibrate	KEYWORD2
+setNTHRForKey		KEYWORD2
+getSignalForKey	KEYWORD2
+getRefDataForKey	KEYWORD2
 
 
 ADDR_QTOUCH	KEYWORD3

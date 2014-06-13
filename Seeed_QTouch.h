@@ -29,8 +29,16 @@
 #define QTOUCH_REG_VERSION      0x01            // Firmware Version
 #define QTOUCH_REG_DETSTATUS    0X02            // detection status
 #define QTOUCH_REG_KEYSTATUS    0X03            // key status
-#define QTOUCH_REG_KEYSIGM      0X04            // MSByte of KEY0
-// .... LSByte ....
+
+#define QTOUCH_REG_SIGMSBK0      0X04            // MSByte of KEY0
+#define QTOUCH_REG_SIGLSBK0      0X05            // LSByte of KEY0
+
+#define QTOUCH_REG_REFMSBK0		18
+#define QTOUCH_REG_REFLSBK0		19
+
+#define QTOUCH_REG_NTHRK0		32
+#define QTOUCH_REG_AVEASK0		39
+#define QTOUCH_REG_DIK0			46
 
 #define QTOUCH_REG_LPMODE       0X36            // low power mode
 #define QTOUCH_REG_MAXDURA      0X37            // max on duration
@@ -47,6 +55,18 @@ public:
     unsigned char getState();                           // return all key state, bit0 for key0, bit1 for key1....
     int touchNum();                                     // if no touch return -1, else return key number 
 
+	void setNTHRForKey(char nthr,char pin)
+	{
+		writeReg(QTOUCH_REG_NTHRK0+pin,nthr);
+	}
+	int getSignalForKey(char pin)
+	{
+		return((readReg(QTOUCH_REG_SIGMSBK0+pin)<<8)+readReg(QTOUCH_REG_SIGLSBK0+pin));
+	}
+ 	int getRefDataForKey(char pin)
+	{
+		return((readReg(QTOUCH_REG_REFMSBK0+pin)<<8)+readReg(QTOUCH_REG_REFLSBK0+pin));
+	}
     void setLowPowerMode(int val)                       // set low power mode
     {
         writeReg(QTOUCH_REG_LPMODE, val);
@@ -57,7 +77,7 @@ public:
         writeReg(QTOUCH_REG_RESET, 0x55);               // write a non-zero value to reset 
     }
     
-    void setMaxDuration(int val)                        // set maxim duration
+    void setMaxDuration(char val)                        // set maxim duration
     {
         writeReg(QTOUCH_REG_MAXDURA, val);
     }
