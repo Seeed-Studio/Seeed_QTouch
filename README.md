@@ -1,6 +1,6 @@
 Seeed QTouch
 -------------------------------------------------------------
-![image](http://www.seeedstudio.com/wiki/images/3/33/Sidekick_19_0.png)
+![image](http://www.seeedstudio.com/depot/images/product/Grove-Q%20Touch%20Sensor.jpg)
 
 LED Bar, common in volume display, is a common sensor component to display analog value. You can use a row of discrete LED lights to make division of this effect, you can also use our element mentioned here. 
 
