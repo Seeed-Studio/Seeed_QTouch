@@ -11,6 +11,7 @@
 void setup()
 {
     Serial.begin(9600);
+    Wire.begin();      //Intel Edison need this procedure
 }
 
 void loop()
