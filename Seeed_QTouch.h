@@ -84,7 +84,7 @@ public:
     
     void calibrate()                                    // calibrate
     {
-        writeReg(QTOUCH_REG_RESET, 0x55);               // write a non-zero value to re-calibrate the device
+        writeReg(QTOUCH_REG_CALIBRATE, 0x55);               // write a non-zero value to re-calibrate the device
     }
     
 private:
