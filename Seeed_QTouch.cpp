@@ -27,7 +27,9 @@
 
 SeeedQTouch::SeeedQTouch()
 {
-    Wire.begin();
+//    Wire.begin(); // Starting Wire in this file causes my NodeMCU to enter boot mode
+                    // with the following message:
+                    // ets Jan  8 2013,rst cause:2, boot mode:(1,6)
 }
 
 // if certain key touched, return 1 - touched, 0 untouched
