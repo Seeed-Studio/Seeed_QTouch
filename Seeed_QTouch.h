@@ -54,6 +54,8 @@ public:
     unsigned char isTouch(int key);                     // if certain key touched, return 1 - touched, 0 untouched
     unsigned char getState();                           // return all key state, bit0 for key0, bit1 for key1....
     int touchNum();                                     // if no touch return -1, else return key number 
+    int setGroup(uint8_t key, uint8_t group);		// set key group or disable a key (group 255)
+    int chipPresent();					// check if the chip is present												// check chip ID
 
 	void setNTHRForKey(char nthr,char pin)
 	{
