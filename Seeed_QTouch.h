@@ -1,23 +1,23 @@
 /*
-  QTouch Library
-  2014 Copyright (c) Seeed Technology Inc.  All right reserved.
+    QTouch Library
+    2014 Copyright (c) Seeed Technology Inc.  All right reserved.
 
-  Author: ZhangKun & Loovee
-  2013-3-20
+    Author: ZhangKun & Loovee
+    2013-3-20
 
-  This library is free software; you can redistribute it and/or
-  modify it under the terms of the GNU Lesser General Public
-  License as published by the Free Software Foundation; either
-  version 2.1 of the License, or (at your option) any later version.
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
 
-  This library is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-  Lesser General Public License for more details.
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
 
-  You should have received a copy of the GNU Lesser General Public
-  License along with this library; if not, write to the Free Software
-  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 #ifndef __SEEED_QTOUCH_H__
 #define __SEEED_QTOUCH_H__
@@ -46,50 +46,43 @@
 #define QTOUCH_REG_RESET        0X39            // reset
 
 
-class SeeedQTouch{
+class SeeedQTouch {
 
-public:
-    
+  public:
+
     SeeedQTouch();
     unsigned char isTouch(int key);                     // if certain key touched, return 1 - touched, 0 untouched
     unsigned char getState();                           // return all key state, bit0 for key0, bit1 for key1....
-    int touchNum();                                     // if no touch return -1, else return key number 
+    int touchNum();                                     // if no touch return -1, else return key number
     int setGroup(uint8_t key, uint8_t group);		// set key group or disable a key (group 255)
     int chipPresent();					// check if the chip is present												// check chip ID
 
-	void setNTHRForKey(char nthr,char pin)
-	{
-		writeReg(QTOUCH_REG_NTHRK0+pin,nthr);
-	}
-	int getSignalForKey(char pin)
-	{
-		return((readReg(QTOUCH_REG_SIGMSBK0+pin)<<8)+readReg(QTOUCH_REG_SIGLSBK0+pin));
-	}
- 	int getRefDataForKey(char pin)
-	{
-		return((readReg(QTOUCH_REG_REFMSBK0+pin)<<8)+readReg(QTOUCH_REG_REFLSBK0+pin));
-	}
-    void setLowPowerMode(int val)                       // set low power mode
-    {
+    void setNTHRForKey(char nthr, char pin) {
+        writeReg(QTOUCH_REG_NTHRK0 + pin, nthr);
+    }
+    int getSignalForKey(char pin) {
+        return ((readReg(QTOUCH_REG_SIGMSBK0 + pin) << 8) + readReg(QTOUCH_REG_SIGLSBK0 + pin));
+    }
+    int getRefDataForKey(char pin) {
+        return ((readReg(QTOUCH_REG_REFMSBK0 + pin) << 8) + readReg(QTOUCH_REG_REFLSBK0 + pin));
+    }
+    void setLowPowerMode(int val) {                     // set low power mode
         writeReg(QTOUCH_REG_LPMODE, val);
     }
-    
-    void reset()                                        // reset
-    {
-        writeReg(QTOUCH_REG_RESET, 0x55);               // write a non-zero value to reset 
+
+    void reset() {                                      // reset
+        writeReg(QTOUCH_REG_RESET, 0x55);               // write a non-zero value to reset
     }
-    
-    void setMaxDuration(char val)                        // set maxim duration
-    {
+
+    void setMaxDuration(char val) {                      // set maxim duration
         writeReg(QTOUCH_REG_MAXDURA, val);
     }
-    
-    void calibrate()                                    // calibrate
-    {
+
+    void calibrate() {                                  // calibrate
         writeReg(QTOUCH_REG_CALIBRATE, 0x55);               // write a non-zero value to re-calibrate the device
     }
-    
-private:
+
+  private:
 
     unsigned char readReg(unsigned char addr_reg);                          // read register
     unsigned char writeReg(unsigned char addr_reg, unsigned char dta);      // write register

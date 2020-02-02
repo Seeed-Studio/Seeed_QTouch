@@ -9,19 +9,16 @@
 #include <Wire.h>
 #include "Seeed_QTouch.h"
 
-void setup()
-{   
+void setup() {
     Serial.begin(9600);
 }
 
-void loop()
-{
-    if(QTouch.isTouch(0))
-    {
+void loop() {
+    if (QTouch.isTouch(0)) {
         long time1 = millis();                          // get origin time
         Serial.print("key 0 touched: ");
-        while(QTouch.isTouch(0));                       // unless key released
-        Serial.print(millis() - time1);                 
+        while (QTouch.isTouch(0));                      // unless key released
+        Serial.print(millis() - time1);
         Serial.println(" ms");
     }
     delay(10);
