@@ -1,4 +1,4 @@
-Seeed QTouch
+Seeed QTouch  [![Build Status](https://travis-ci.com/Seeed-Studio/Seeed_QTouch.svg?branch=master)](https://travis-ci.com/Seeed-Studio/Seeed_QTouch)
 -------------------------------------------------------------
 
 <img src=https://statics3.seeedstudio.com/images/product/Grove-Q%20Touch%20Sensor.jpg width=400><img src=https://statics3.seeedstudio.com/product/Grove-Q%20Touch%20Sensor_02.jpg width=400>
