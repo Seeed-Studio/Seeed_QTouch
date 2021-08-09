@@ -31,7 +31,7 @@ SeeedQTouch::SeeedQTouch() {
 
 
 // Check chip ID
-int SeeedQTouch::chipPresent() {
+int SeeedQTouch::chipPresent(void) {
     if (readReg(QTOUCH_REG_CHIPID) == 0x2e) {
         return 1;
     }
